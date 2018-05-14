@@ -97,6 +97,39 @@ func main() {
 }
 ```
 
+## ファイルから読み込む
+
+```go
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"log"
+
+	pb "./tutorial"
+	"github.com/golang/protobuf/proto"
+)
+
+func main() {
+	in, err := ioutil.ReadFile("./person.bin")
+	if err != nil {
+		log.Fatalln("Error reading file:", err)
+	}
+	p := &pb.Person{}
+	if err := proto.Unmarshal(in, p); err != nil {
+		log.Fatalln("Failed to parse person:", err)
+	}
+
+	fmt.Println(p)
+}
+```
+
+```sh
+❯ go run read.go
+name:"John Doe" id:1234 email:"jdoe@example.com" phones:<number:"555-4321" type:HOME >
+```
+
 ## References
 * [Googleが作ったRPCフレームワークgRPCを使ってみた](https://www.sambaiz.net/article/12/)
 * [gRPC(Go) で API を実装する](https://blog.fenrir-inc.com/jp/2016/10/grpc-go.html)
