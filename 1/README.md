@@ -49,6 +49,20 @@ message AddressBook {
 }
 ```
 
+## protocのインストール
+
+```sh
+❯ go get -u github.com/golang/protobuf/protoc-gen-go
+```
+
+## コンパイル
+
+```sh
+❯ protoc -I=. --go_out=. ./addressbook.proto
+```
+
+同じフォルダに`addressbook.pb.go`が生成される。
+
 
 ## References
 * [Googleが作ったRPCフレームワークgRPCを使ってみた](https://www.sambaiz.net/article/12/)
