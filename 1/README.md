@@ -58,10 +58,10 @@ message AddressBook {
 ## コンパイル
 
 ```sh
-❯ protoc -I=. --go_out=. ./addressbook.proto
+❯ protoc --go_out=plugins=grpc:tutorial addressbook.proto
 ```
 
-同じフォルダに`addressbook.pb.go`が生成される。
+`addressbook.pb.go`が生成される。
 
 
 ## References
